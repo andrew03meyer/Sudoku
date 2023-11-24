@@ -53,9 +53,28 @@ public class Checker {
         return valid;
     }
 
-    public Boolean threeByThreeCheck(ArrayList<ArrayList> grid){
-        Boolean valid = true;
+    public Boolean threeByThreeCheck(ArrayList<ArrayList> grid, Boolean valid){
+        if(grid.size() == 2){
+            Boolean hBool = horizontalCheck(grid);
+            Boolean vBool = verticalCheck(grid);
+            if(hBool && vBool){valid = true;}
+            valid = false;
 
+        }
+        else {
+            ArrayList<ArrayList> arr1 = new ArrayList<ArrayList>(grid.subList(0, 2));
+            ArrayList<ArrayList> arr2 = new ArrayList<ArrayList>(grid.subList(2, 4));
+            ArrayList<ArrayList> arr3 = new ArrayList<ArrayList>(grid.subList(4, 6));
+            ArrayList<ArrayList> arr4 = new ArrayList<ArrayList>(grid.subList(6, 8));
+            System.out.println("arr1: " + arr1.size());
+            System.out.println("arr2: " + arr2.size());
+            System.out.println("arr3: " + arr3.size());
+            System.out.println("arr4: " + arr4.size());
+            threeByThreeCheck(arr1, valid);
+            threeByThreeCheck(arr2, valid);
+            threeByThreeCheck(arr3, valid);
+            threeByThreeCheck(arr4, valid);
+        }
         return valid;
     }
 }

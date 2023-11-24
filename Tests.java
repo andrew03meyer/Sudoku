@@ -26,5 +26,6 @@ public class Tests {
         Checker ch1 = new Checker();
         ch1.horizontalCheck(b1.getGrid());
         ch1.verticalCheck(b1.getGrid());
+        ch1.threeByThreeCheck(b1.getGrid(), true);
     }
 }
