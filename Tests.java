@@ -22,9 +22,10 @@ public class Tests {
                 "9, 8, 7, 6, 5, 4, 3, 2, 1";
 
         Board b1 = new Board(board2);
-        b1.printGrid();
+        //b1.printGrid();
         Checker ch1 = new Checker();
         ch1.horizontalCheck(b1.getGrid());
         ch1.verticalCheck(b1.getGrid());
+        ch1.threeByThreeCheck(b1.getGrid());
     }
 }

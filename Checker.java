@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 public class Checker {
-    public Boolean horizontalCheck(ArrayList<ArrayList> grid){
+    public Boolean horizontalCheck(ArrayList<ArrayList<Integer>> grid){
         Boolean valid = true;
 
         //vertical Check
@@ -27,7 +27,7 @@ public class Checker {
         return valid;
     }
 
-    public Boolean verticalCheck(ArrayList<ArrayList> grid){
+    public Boolean verticalCheck(ArrayList<ArrayList<Integer>> grid){
         Boolean valid = true;
 
         //vertical check
@@ -53,32 +53,100 @@ public class Checker {
         return valid;
     }
 
-    public Boolean threeByThreeCheck(ArrayList<ArrayList> grid){
+    public Boolean threeByThreeCheck(ArrayList<ArrayList<Integer>> grid){
         Boolean valid = true;
-        int row = 0;
-        int col = 0;
-        HashMap hm1 = new HashMap();
+        ArrayList<ArrayList<Integer>> array1 = new ArrayList<ArrayList<Integer>>();
 
-        while(row < 9 && col < 9 && valid == true){
-            if(!(col == 2)){
-                if(!hm1.containsKey(grid.get(row).get(col))){
-                    hm1.put(grid.get(row).get(col), 1);
-                }
-                else{
-                    valid = false;
-                }
+        //(0-2,0-2)
+        for(int row = 0; row < 3; row++) {
+            ArrayList<Integer> col1 = new ArrayList<Integer>();
 
-                //Reset variables for the 3x3
-                if(col == 2 && row < 3){
-                    row++;
-                    col=0;
-                }
+            for (int col1Index = 0; col1Index < 3; col1Index++) {
+                col1.add(grid.get(row).get(col1Index));
             }
-            else {
-                hm1 = new HashMap();
-
-            }
+            array1.add(col1);
         }
+
+        //(0-2,3-5)
+        for(int row = 0; row < 3; row++) {
+            ArrayList<Integer> col1 = new ArrayList<Integer>();
+
+            for (int col1Index = 3; col1Index < 6; col1Index++) {
+                col1.add(grid.get(row).get(col1Index));
+            }
+            array1.add(col1);
+        }
+
+        //(0-2,5-8)
+        for(int row = 0; row < 3; row++) {
+            ArrayList<Integer> col1 = new ArrayList<Integer>();
+
+            for (int col1Index = 6; col1Index < 9; col1Index++) {
+                col1.add(grid.get(row).get(col1Index));
+            }
+            array1.add(col1);
+        }
+
+        //(3-5, 0-2)
+        for(int row=3; row < 6; row++) {
+            ArrayList<Integer> col2 = new ArrayList<Integer>();
+
+            for (int col2Index = 0; col2Index < 3; col2Index++) {
+                col2.add(grid.get(row).get(col2Index));
+            }
+            array1.add(col2);
+        }
+
+        //(3-5, 3-5)
+        for(int row=3; row < 6; row++) {
+            ArrayList<Integer> col2 = new ArrayList<Integer>();
+
+            for (int col2Index = 3; col2Index < 6; col2Index++) {
+                col2.add(grid.get(row).get(col2Index));
+            }
+            array1.add(col2);
+        }
+
+        //(3-5, 5-8)
+        for(int row=3; row < 6; row++) {
+            ArrayList<Integer> col2 = new ArrayList<Integer>();
+
+            for (int col2Index = 0; col2Index < 3; col2Index++) {
+                col2.add(grid.get(row).get(col2Index));
+            }
+            array1.add(col2);
+        }
+
+        //(5-8, 0-2)
+        for(int row=6; row < 9; row++){
+            ArrayList<Integer> col3 = new ArrayList<Integer>();
+            for(int col3Index=0; col3Index<3; col3Index++){
+                col3.add(grid.get(row).get(col3Index));
+            }
+            array1.add(col3);
+        }
+
+        //(5-8, 3-5)
+        for(int row=6; row < 9; row++){
+            ArrayList<Integer> col3 = new ArrayList<Integer>();
+            for(int col3Index=3; col3Index<6; col3Index++){
+                col3.add(grid.get(row).get(col3Index));
+            }
+            array1.add(col3);
+        }
+
+        //(5-8, 6-8)
+        for(int row=6; row < 9; row++){
+            ArrayList<Integer> col3 = new ArrayList<Integer>();
+            for(int col3Index=6; col3Index<9; col3Index++){
+                col3.add(grid.get(row).get(col3Index));
+            }
+            array1.add(col3);
+        }
+
+        
+        //Board b2 = new Board(array1);
+        //b2.printGrid();
 
         return valid;
     }

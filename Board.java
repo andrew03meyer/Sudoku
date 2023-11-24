@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Board {
-    private ArrayList<ArrayList> rows = new ArrayList<ArrayList>();
+    private ArrayList<ArrayList<Integer>> grid = new ArrayList<ArrayList<Integer>>();
 
     /*
     * constructor - takes string parameter
@@ -15,7 +15,7 @@ public class Board {
                 for(int y = 0; y < 9; y++){
                     intArr.add(Integer.parseInt(strArr[(x*9)+y]));
                 }
-                rows.add(intArr);
+                grid.add(intArr);
             }
         }
         catch(Exception e){
@@ -23,11 +23,15 @@ public class Board {
         }
     }
 
+    public Board(ArrayList<ArrayList<Integer>>arr1){
+        grid = arr1;
+    }
+
     /*
     * print values in the grid
      */
     public void printGrid(){
-        for(ArrayList<Integer> row:rows){
+        for(ArrayList<Integer> row:grid){
             for(Integer value:row){
                 System.out.print(value);
             }
@@ -35,7 +39,7 @@ public class Board {
         }
     }
 
-    public ArrayList<ArrayList> getGrid(){
-        return rows;
+    public ArrayList<ArrayList<Integer>> getGrid(){
+        return grid;
     }
 }
