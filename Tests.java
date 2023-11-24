@@ -35,8 +35,6 @@ public class Tests {
         Board b1 = new Board(board3);
         //b1.printGrid();
         Checker ch1 = new Checker();
-        ch1.horizontalCheck(b1.getGrid());
-        ch1.verticalCheck(b1.getGrid());
-        ch1.threeByThreeCheck(b1.getGrid());
+        System.out.println(ch1.Process(b1.getGrid()));
     }
 }
