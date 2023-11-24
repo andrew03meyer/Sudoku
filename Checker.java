@@ -1,7 +1,16 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 public class Checker {
-    public Boolean horizontalCheck(ArrayList<ArrayList<Integer>> grid){
+
+    public Boolean Process(ArrayList<ArrayList<Integer>> grid){
+        if(horizontalCheck(grid) && verticalCheck(grid) && threeByThreeCheck(grid)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    private Boolean horizontalCheck(ArrayList<ArrayList<Integer>> grid){
         Boolean valid = true;
 
         //vertical Check
@@ -18,16 +27,16 @@ public class Checker {
         }
 
         //Print validity
-        if(valid){
+        /*if(valid){
             System.out.println("This is horizontally valid");
         }
         else{
             System.out.println("This is horizontally not valid");
-        }
+        }*/
         return valid;
     }
 
-    public Boolean verticalCheck(ArrayList<ArrayList<Integer>> grid){
+    private Boolean verticalCheck(ArrayList<ArrayList<Integer>> grid){
         Boolean valid = true;
 
         //vertical check
@@ -44,16 +53,16 @@ public class Checker {
         }
 
         //print validity
-        if(valid){
+        /*if(valid){
             System.out.println("This is vertically valid");
         }
         else{
             System.out.println("This is vertically not valid");
-        }
+        }*/
         return valid;
     }
 
-    public Boolean threeByThreeCheck(ArrayList<ArrayList<Integer>> grid){
+    private Boolean threeByThreeCheck(ArrayList<ArrayList<Integer>> grid){
         Boolean valid = true;
         HashMap hash1 = new HashMap();
 
@@ -95,7 +104,6 @@ public class Checker {
                 }
             }
         }
-        System.out.println(valid);
 
         return valid;
     }
