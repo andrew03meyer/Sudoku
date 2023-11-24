@@ -144,7 +144,12 @@ public class Checker {
             array1.add(col3);
         }
 
-        
+        for(ArrayList<Integer> integerList: array1) {
+            for (Integer value : integerList) {
+                System.out.print(value);
+            }
+            System.out.println("\n");
+        }
         //Board b2 = new Board(array1);
         //b2.printGrid();
 
