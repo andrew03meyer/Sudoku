@@ -76,19 +76,24 @@ public class Checker {
                 valid = false;
             }
 
+            //If at the end of the grid and row
             if (col == 8 && (row == 2 || row == 5)) {
                 col = 0;
                 row++;
+                hash1 = new HashMap();
             }
             else {
                 if(col == 2 || col == 5 || row == 3 || row == 6) {
+                    //If at the end of a column 3x3
                     if (col == 2 || col == 5) {
                         col -= 2;
                         row++;
                     }
+                    //if at the end of a row 3x3
                     if (row == 3 || row == 6) {
                         row -= 3;
                         col += 3;
+                        hash1 = new HashMap();
                     }
                 }
                 //Takes you out of while
