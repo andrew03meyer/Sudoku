@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 public class Checker {
 
-    public Boolean Process(ArrayList<ArrayList<Integer>> grid){
+    public Boolean process(ArrayList<ArrayList<Integer>> grid){
         if(horizontalCheck(grid) && verticalCheck(grid) && threeByThreeCheck(grid)){
             return true;
         }
@@ -25,14 +25,6 @@ public class Checker {
                 }
             }
         }
-
-        //Print validity
-        /*if(valid){
-            System.out.println("This is horizontally valid");
-        }
-        else{
-            System.out.println("This is horizontally not valid");
-        }*/
         return valid;
     }
 
@@ -51,14 +43,6 @@ public class Checker {
                 }
             }
         }
-
-        //print validity
-        /*if(valid){
-            System.out.println("This is vertically valid");
-        }
-        else{
-            System.out.println("This is vertically not valid");
-        }*/
         return valid;
     }
 
@@ -98,7 +82,7 @@ public class Checker {
                         hash1 = new HashMap();
                     }
                 }
-                //Takes you out of while
+                //Increments column if no other condition met
                 else{
                     col++;
                 }

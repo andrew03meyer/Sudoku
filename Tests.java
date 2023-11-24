@@ -35,6 +35,6 @@ public class Tests {
         Board b1 = new Board(board3);
         //b1.printGrid();
         Checker ch1 = new Checker();
-        System.out.println(ch1.Process(b1.getGrid()));
+        System.out.println(ch1.process(b1.getGrid()));
     }
 }
