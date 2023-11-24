@@ -55,21 +55,14 @@ public class Checker {
 
     public Boolean threeByThreeCheck(ArrayList<ArrayList<Integer>> grid){
         Boolean valid = true;
-        ArrayList<ArrayList<Integer>> grid1 = new ArrayList<ArrayList<Integer>>();
-//        ArrayList<ArrayList<Integer>> grid2 = new ArrayList<ArrayList<Integer>>();
-//        ArrayList<ArrayList<Integer>> grid3 = new ArrayList<ArrayList<Integer>>();
-//        ArrayList<ArrayList<Integer>> grid4 = new ArrayList<ArrayList<Integer>>();
-//        ArrayList<ArrayList<Integer>> grid5 = new ArrayList<ArrayList<Integer>>();
-//        ArrayList<ArrayList<Integer>> grid6 = new ArrayList<ArrayList<Integer>>();
-//        ArrayList<ArrayList<Integer>> grid7 = new ArrayList<ArrayList<Integer>>();
-//        ArrayList<ArrayList<Integer>> grid8 = new ArrayList<ArrayList<Integer>>();
-//        ArrayList<ArrayList<Integer>> grid9 = new ArrayList<ArrayList<Integer>>();
         HashMap hash1 = new HashMap();
 
         int col = 0;
         int row = 0;
 
         while(col < 9 && row < 9 && valid) {
+
+            //Checks the hash's contents
             if (!hash1.containsKey(grid.get(row).get(col))) {
                 hash1.put(grid.get(row).get(col), 1);
             } else {
