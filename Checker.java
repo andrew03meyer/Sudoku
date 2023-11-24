@@ -56,218 +56,48 @@ public class Checker {
     public Boolean threeByThreeCheck(ArrayList<ArrayList<Integer>> grid){
         Boolean valid = true;
         ArrayList<ArrayList<Integer>> grid1 = new ArrayList<ArrayList<Integer>>();
-        ArrayList<ArrayList<Integer>> grid2 = new ArrayList<ArrayList<Integer>>();
-        ArrayList<ArrayList<Integer>> grid3 = new ArrayList<ArrayList<Integer>>();
-        ArrayList<ArrayList<Integer>> grid4 = new ArrayList<ArrayList<Integer>>();
-        ArrayList<ArrayList<Integer>> grid5 = new ArrayList<ArrayList<Integer>>();
-        ArrayList<ArrayList<Integer>> grid6 = new ArrayList<ArrayList<Integer>>();
-        ArrayList<ArrayList<Integer>> grid7 = new ArrayList<ArrayList<Integer>>();
-        ArrayList<ArrayList<Integer>> grid8 = new ArrayList<ArrayList<Integer>>();
-        ArrayList<ArrayList<Integer>> grid9 = new ArrayList<ArrayList<Integer>>();
+//        ArrayList<ArrayList<Integer>> grid2 = new ArrayList<ArrayList<Integer>>();
+//        ArrayList<ArrayList<Integer>> grid3 = new ArrayList<ArrayList<Integer>>();
+//        ArrayList<ArrayList<Integer>> grid4 = new ArrayList<ArrayList<Integer>>();
+//        ArrayList<ArrayList<Integer>> grid5 = new ArrayList<ArrayList<Integer>>();
+//        ArrayList<ArrayList<Integer>> grid6 = new ArrayList<ArrayList<Integer>>();
+//        ArrayList<ArrayList<Integer>> grid7 = new ArrayList<ArrayList<Integer>>();
+//        ArrayList<ArrayList<Integer>> grid8 = new ArrayList<ArrayList<Integer>>();
+//        ArrayList<ArrayList<Integer>> grid9 = new ArrayList<ArrayList<Integer>>();
+        HashMap hash1 = new HashMap();
 
-        //(0-2,0-2)
-        for(int row = 0; row < 3; row++) {
-            ArrayList<Integer> col1 = new ArrayList<Integer>();
+        int col = 0;
+        int row = 0;
 
-            for (int col1Index = 0; col1Index < 3; col1Index++) {
-                col1.add(grid.get(row).get(col1Index));
+        while(col < 9 && row < 9 && valid) {
+            if (!hash1.containsKey(grid.get(row).get(col))) {
+                hash1.put(grid.get(row).get(col), 1);
+            } else {
+                valid = false;
             }
-            grid1.add(col1);
-        }
 
-        //(0-2,3-5)
-        for(int row = 0; row < 3; row++) {
-            ArrayList<Integer> col1 = new ArrayList<Integer>();
-
-            for (int col1Index = 3; col1Index < 6; col1Index++) {
-                col1.add(grid.get(row).get(col1Index));
+            if (col == 8 && (row == 2 || row == 5)) {
+                col = 0;
+                row++;
             }
-            grid2.add(col1);
-        }
-
-        //(0-2,5-8)
-        for(int row = 0; row < 3; row++) {
-            ArrayList<Integer> col1 = new ArrayList<Integer>();
-
-            for (int col1Index = 6; col1Index < 9; col1Index++) {
-                col1.add(grid.get(row).get(col1Index));
-            }
-            grid3.add(col1);
-        }
-
-        //(3-5, 0-2)
-        for(int row=3; row < 6; row++) {
-            ArrayList<Integer> col2 = new ArrayList<Integer>();
-
-            for (int col2Index = 0; col2Index < 3; col2Index++) {
-                col2.add(grid.get(row).get(col2Index));
-            }
-            grid4.add(col2);
-        }
-
-        //(3-5, 3-5)
-        for(int row=3; row < 6; row++) {
-            ArrayList<Integer> col2 = new ArrayList<Integer>();
-
-            for (int col2Index = 3; col2Index < 6; col2Index++) {
-                col2.add(grid.get(row).get(col2Index));
-            }
-            grid5.add(col2);
-        }
-
-        //(3-5, 5-8)
-        for(int row=3; row < 6; row++) {
-            ArrayList<Integer> col2 = new ArrayList<Integer>();
-
-            for (int col2Index = 0; col2Index < 3; col2Index++) {
-                col2.add(grid.get(row).get(col2Index));
-            }
-            grid6.add(col2);
-        }
-
-        //(5-8, 0-2)
-        for(int row=6; row < 9; row++){
-            ArrayList<Integer> col3 = new ArrayList<Integer>();
-            for(int col3Index=0; col3Index<3; col3Index++){
-                col3.add(grid.get(row).get(col3Index));
-            }
-            grid7.add(col3);
-        }
-
-        //(5-8, 3-5)
-        for(int row=6; row < 9; row++){
-            ArrayList<Integer> col3 = new ArrayList<Integer>();
-            for(int col3Index=3; col3Index<6; col3Index++){
-                col3.add(grid.get(row).get(col3Index));
-            }
-            grid8.add(col3);
-        }
-
-        //(5-8, 6-8)
-        for(int row=6; row < 9; row++){
-            ArrayList<Integer> col3 = new ArrayList<Integer>();
-            for(int col3Index=6; col3Index<9; col3Index++){
-                col3.add(grid.get(row).get(col3Index));
-            }
-            grid9.add(col3);
-        }
-
-        HashMap hash2 = new HashMap();
-        for(ArrayList<Integer> integerList: grid1) {
-            for (Integer value : integerList) {
-                if(!hash2.containsKey(value)){
-                    hash2.put(value, 1);
+            else {
+                if(col == 2 || col == 5 || row == 3 || row == 6) {
+                    if (col == 2 || col == 5) {
+                        col -= 2;
+                        row++;
+                    }
+                    if (row == 3 || row == 6) {
+                        row -= 3;
+                        col += 3;
+                    }
                 }
+                //Takes you out of while
                 else{
-                    valid = false;
+                    col++;
                 }
             }
         }
-
-        hash2 = new HashMap();
-        for(ArrayList<Integer> integerList: grid2) {
-            for (Integer value : integerList) {
-                if(!hash2.containsKey(value)){
-                    hash2.put(value, 1);
-                }
-                else{
-                    valid = false;
-                }
-            }
-        }
-
-        hash2 = new HashMap();
-        for(ArrayList<Integer> integerList: grid3) {
-            for (Integer value : integerList) {
-                if(!hash2.containsKey(value)){
-                    hash2.put(value, 1);
-                }
-                else{
-                    valid = false;
-                }
-            }
-        }
-
-        hash2 = new HashMap();
-        for(ArrayList<Integer> integerList: grid4) {
-            for (Integer value : integerList) {
-                if(!hash2.containsKey(value)){
-                    hash2.put(value, 1);
-                }
-                else{
-                    valid = false;
-                }
-            }
-        }
-
-        hash2 = new HashMap();
-        for(ArrayList<Integer> integerList: grid5) {
-            for (Integer value : integerList) {
-                if(!hash2.containsKey(value)){
-                    hash2.put(value, 1);
-                }
-                else{
-                    valid = false;
-                }
-            }
-        }
-
-        hash2 = new HashMap();
-        for(ArrayList<Integer> integerList: grid6) {
-            for (Integer value : integerList) {
-                if(!hash2.containsKey(value)){
-                    hash2.put(value, 1);
-                }
-                else{
-                    valid = false;
-                }
-            }
-        }
-
-        hash2 = new HashMap();
-        for(ArrayList<Integer> integerList: grid7) {
-            for (Integer value : integerList) {
-                if(!hash2.containsKey(value)){
-                    hash2.put(value, 1);
-                }
-                else{
-                    valid = false;
-                }
-            }
-        }
-
-        hash2 = new HashMap();
-        for(ArrayList<Integer> integerList: grid8) {
-            for (Integer value : integerList) {
-                if(!hash2.containsKey(value)){
-                    hash2.put(value, 1);
-                }
-                else{
-                    valid = false;
-                }
-            }
-        }
-
-        hash2 = new HashMap();
-        for(ArrayList<Integer> integerList: grid9) {
-            for (Integer value : integerList) {
-                if(!hash2.containsKey(value)){
-                    hash2.put(value, 1);
-                }
-                else{
-                    valid = false;
-                }
-            }
-        }
-
-        if(valid){
-            System.out.printf("All 3x3s are valid");
-        }
-        else{
-            System.out.println("There is an invalid 3x3");
-        }
-        //Board b2 = new Board(array1);
-        //b2.printGrid();
+        System.out.println(valid);
 
         return valid;
     }
