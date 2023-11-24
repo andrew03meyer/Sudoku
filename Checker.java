@@ -55,30 +55,6 @@ public class Checker {
 
     public Boolean threeByThreeCheck(ArrayList<ArrayList> grid){
         Boolean valid = true;
-        int row = 0;
-        int col = 0;
-        HashMap hm1 = new HashMap();
-
-        while(row < 9 && col < 9 && valid == true){
-            if(!(col == 2)){
-                if(!hm1.containsKey(grid.get(row).get(col))){
-                    hm1.put(grid.get(row).get(col), 1);
-                }
-                else{
-                    valid = false;
-                }
-
-                //Reset variables for the 3x3
-                if(col == 2 && row < 3){
-                    row++;
-                    col=0;
-                }
-            }
-            else {
-                hm1 = new HashMap();
-
-            }
-        }
 
         return valid;
     }
