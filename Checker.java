@@ -13,12 +13,11 @@ public class Checker {
     private Boolean horizontalCheck(ArrayList<ArrayList<Integer>> grid){
         Boolean valid = true;
 
-        //vertical Check
         for(ArrayList<Integer> row:grid){
-            HashMap hm1 = new HashMap();
+            ArrayList<Integer> values = new ArrayList<Integer>();
             for(Integer value: row){
-                if(!hm1.containsKey(value)){
-                    hm1.put(value, 1);
+                if(!values.contains(value)){
+                    values.add(value);
                 }
                 else{
                     valid = false;
@@ -33,10 +32,10 @@ public class Checker {
 
         //vertical check
         for(int x = 0; x < grid.size(); x++){
-            HashMap hm1 = new HashMap();
+            ArrayList<Integer> values = new ArrayList<Integer>();
             for(int y = 0; y < grid.get(x).size(); y++){
-                if(!hm1.containsKey(grid.get(y).get(x))){
-                    hm1.put(grid.get(y).get(x), 1);
+                if(!values.contains(grid.get(y).get(x))){
+                    values.add(grid.get(y).get(x));
                 }
                 else{
                     valid = false;
@@ -48,7 +47,7 @@ public class Checker {
 
     private Boolean threeByThreeCheck(ArrayList<ArrayList<Integer>> grid){
         Boolean valid = true;
-        HashMap hash1 = new HashMap();
+        ArrayList<Integer> values = new ArrayList<Integer>();
 
         int col = 0;
         int row = 0;
@@ -56,8 +55,8 @@ public class Checker {
         while(col < 9 && row < 9 && valid) {
 
             //Checks the hash's contents
-            if (!hash1.containsKey(grid.get(row).get(col))) {
-                hash1.put(grid.get(row).get(col), 1);
+            if (!values.contains(grid.get(row).get(col))) {
+                values.add(grid.get(row).get(col));
             } else {
                 valid = false;
             }
@@ -66,7 +65,7 @@ public class Checker {
             if (col == 8 && (row == 2 || row == 5)) {
                 col = 0;
                 row++;
-                hash1 = new HashMap();
+                values = new ArrayList<Integer>();
             }
             else {
                 if(col == 2 || col == 5 || row == 3 || row == 6) {
@@ -79,7 +78,7 @@ public class Checker {
                     if (row == 3 || row == 6) {
                         row -= 3;
                         col += 3;
-                        hash1 = new HashMap();
+                        values = new ArrayList<Integer>();
                     }
                 }
                 //Increments column if no other condition met
